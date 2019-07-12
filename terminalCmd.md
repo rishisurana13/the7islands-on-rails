@@ -1,1 +1,1 @@
-bin/rails generate migration AddProductToUsers product:references
+bin/rails generate scaffol
