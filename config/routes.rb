@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # Custom routes
   get '/customers' => 'customers#index'
   post '/customer-sign-up' => 'customers#signup'
-  post '/sign-in' => 'customers#signin'
-  delete '/sign-out' => 'customers#signout'
-  patch '/change-password' => 'customers#changepw'
+  post '/customer-sign-in' => 'customers#signin'
+  delete '/customer-sign-out' => 'customers#signout'
+  patch '/customer-change-password' => 'customers#changepw'
 end

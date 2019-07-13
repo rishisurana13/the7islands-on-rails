@@ -62,7 +62,7 @@ class CustomersController < OpenReadController
 
   def customer_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation, :name, :balance)
+          .permit(:email, :password, :password_confirmation)
   end
 
   def pw_creds
