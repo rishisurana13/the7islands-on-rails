@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UsersController < ProtectedController
+class UsersController < OpenReadController
   skip_before_action :authenticate, only: %i[signup signin]
 
   # POST '/sign-up'
@@ -11,6 +11,18 @@ class UsersController < ProtectedController
     else
       render json: user.errors, status: :bad_request
     end
+  end
+
+  def index
+    @users = User.all
+
+    render json: @users
+  end
+
+  # GET /products/1
+  # GET /products/1.json
+  def show
+    render json: Product.find(params[:id])
   end
 
   # POST '/sign-in'
@@ -50,7 +62,7 @@ class UsersController < ProtectedController
 
   def user_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation)
+          .permit(:email, :password, :password_confirmation, :name, :balance)
   end
 
   def pw_creds
