@@ -22,14 +22,14 @@ class CustomersController < OpenReadController
   # GET /products/1
   # GET /products/1.json
   def show
-    render json: Product.find(params[:id])
+    render json: Customer.find(params[:id])
   end
 
   # POST '/sign-in'
   def signin
     creds = customer_creds
     if (customer = Customer.authenticate creds[:email],
-                                 creds[:password])
+                                         creds[:password])
       render json: customer, serializer: CustomerLoginSerializer, root: 'customer'
     else
       head :unauthorized
